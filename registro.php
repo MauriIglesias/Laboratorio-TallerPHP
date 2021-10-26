@@ -70,7 +70,7 @@
       <label for="floatingPassword">Password</label>
     </div>
 
-    <a href='login.php'  type="submit" class="w-100 btn btn-lg btn-primary" > Registrar </a>
+    <a href='index.php'  type="submit" class="w-100 btn btn-lg btn-primary" > Registrar </a>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>

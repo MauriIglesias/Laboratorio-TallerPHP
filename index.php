@@ -65,9 +65,9 @@
 
     <!-- Falta validacion y ver de identificar tipos-->
     <br>
-    <a href='maincliente.php'  type="submit" class="w-100 btn btn-lg btn-primary" > LoginC </a>
+    <a href='mainCliente.php'  type="submit" class="w-100 btn btn-lg btn-primary" > LoginC </a>
     <br>
-    <a href='mainadmin.php'  type="submit" class="w-100 btn btn-lg btn-primary" > LoginA </a>
+    <a href='mainAdmin.php'  type="submit" class="w-100 btn btn-lg btn-primary" > LoginA </a>
     <br>
 
 
