@@ -47,7 +47,7 @@
 				$cek = mysqli_query($con, "SELECT * FROM producto WHERE nombre='$nombre'");
 				if(mysqli_num_rows($cek) == 0){
                     $insert = mysqli_query($con, "INSERT INTO producto(nombre, precio)
-                                                        VALUES('$nombre','$precio')") or die(mysqli_error());
+                                                        VALUES('$nombre','$precio')") or die(mysqli_error($con));
                     if($insert){
                         $sql = mysqli_query($con, "SELECT * FROM producto WHERE nombre='$nombre'");
                         $id_producto = (int) mysqli_fetch_assoc($sql)['id'];
@@ -62,7 +62,7 @@
 
                 // Guardo cantidad en tabla PRODUCTO_CANTIDAD
                 $insert = mysqli_query($con, "INSERT INTO producto_cantidad(id_producto, cantidad)
-															VALUES('$id_producto','$cantidad')") or die(mysqli_error());
+															VALUES('$id_producto','$cantidad')") or die(mysqli_error($con));
                 if($insert){
                     echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
                 }else{
@@ -71,7 +71,7 @@
 
                 // Guardo link a imagen en tabla PRODUCTO_IMAGEN
                 $insert = mysqli_query($con, "INSERT INTO producto_imagen(id_producto, imagen)
-															VALUES('$id_producto','$imagen')") or die(mysqli_error());
+															VALUES('$id_producto','$imagen')") or die(mysqli_error($con));
                 if($insert){
                     echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Guardado con éxito!div>';
                 }else{

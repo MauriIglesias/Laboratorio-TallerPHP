@@ -22,13 +22,8 @@ if($filas){
     }
 
 }else{
-    ?>
-    <?php
     include("index.php");
-
-  ?>
-  <h1 class="bad">ERROR DE AUTENTIFICACION</h1>
-  <?php
+    echo "<h1 class='bad'>ERROR DE AUTENTIFICACION</h1>";
 }
 mysqli_free_result($resultado);
 mysqli_close($conexion);
