@@ -50,24 +50,22 @@
   <body class="text-center">
     
 <main class="form-signin">
-  <form>
+  <form action="login.php" method="post">
     <img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Login</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="logimeEmail" placeholder="name@example.com">
+      <input type="email" class="form-control" name="logimeEmail" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+      <input type="password" class="form-control" name="loginPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
     <!-- Falta validacion y ver de identificar tipos-->
     <br>
-    <a href='mainCliente.php'  type="submit" class="w-100 btn btn-lg btn-primary" > LoginC </a>
-    <br>
-    <a href='mainAdmin.php'  type="submit" class="w-100 btn btn-lg btn-primary" > LoginA </a>
+    <input type="submit" class="w-100 btn btn-lg btn-primary" > Login </a>
     <br>
 
 
