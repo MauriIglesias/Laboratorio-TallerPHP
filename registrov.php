@@ -13,14 +13,14 @@
 
    if($filas){
         include("registro.php");
-        echo "<h1 class='bad'>ERROR DE AUTENTIFICACION</h1>";
+        echo "<h1 class='bad'>ERROR CORREO EN USO</h1>";
     }else{
-        $sql = "INSERT INTO usuario (correo, nombre, apellido, contrasena, tipo, habilitado) VALUES ($correo, $nombre, $apellido, $contrasena, 1, 0)";
+        $sql = "INSERT INTO usuario (correo, nombre, apellido, contrasena, tipo, habilitado) VALUES ('$correo', '$nombre', '$apellido', '$contrasena', 1, 0)";
         if (mysqli_query($conexion, $sql)) {
             include("index.php");
         } else {
             include("registro.php");
-            echo "<h1 class='bad'>ERROR DE AUTENTIFICACION</h1>";
+            echo "<h1 class='bad'>ERROR DE REGISTRO</h1>";
         }
 
     }
