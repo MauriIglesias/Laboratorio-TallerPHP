@@ -48,6 +48,7 @@
                         <h2 class="pull-left">Mensajes de Usuarios</h2>
                     </div>
                     <?php
+                    // faltaria preguntar la session por si el usuario esta como admin
                         $con = Conectarse();
                         $sql = "SELECT * FROM feedback";
                         if($result = mysqli_query($con, $sql)){
