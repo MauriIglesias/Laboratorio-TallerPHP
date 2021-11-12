@@ -79,26 +79,28 @@
                                                 $userData = $user['nombre'] . " " . $user['apellido'];
                                             }
                                         }
-                                        // 
-                                        // if(($resultCompra = mysqli_query($con, $sqlCompraData)) && mysqli_num_rows($resultCompra) > 0){
-                                        //     $productoId;
-                                        //     while($compra = mysqli_fetch_assoc($resultCompra)){
-                                        //         $productoId = $compra['id_producto'];
-                                        //     }
-                                        //     if ($productoId){
-                                        //         $sqlProductoData = "SELECT * FROM producto p WHERE p.id = '$productoId'";
-                                        //         if(($resultProducto = mysqli_query($con, $sqlProductoData)) && mysqli_num_rows($resultProducto) > 0){
-                                        //             while($producto = mysqli_fetch_assoc($resultProducto)){
-                                        //                 $productoData = $producto['nombre'];
-                                        //             }
-                                        //         }
-                                        //     }
-                                        // }
+
+                                        if(($resultCompra = mysqli_query($con, $sqlCompraData)) && mysqli_num_rows($resultCompra) > 0){
+                                            $productoId;
+                                            while($compra = mysqli_fetch_array($resultCompra)){
+                                                $productoId = $compra['id_producto'];
+                                                if ($productoId){
+                                                    $sqlProductoData = "SELECT * FROM producto p WHERE p.id = '$productoId'";
+                                                    if(($resultProducto = mysqli_query($con, $sqlProductoData)) && mysqli_num_rows($resultProducto) > 0){
+                                                        while($producto = mysqli_fetch_assoc($resultProducto)){
+                                                            $productoData .= $producto['nombre'] . ', ';
+                                                        }
+                                                        
+                                                    }
+                                                }
+                                            }
+                                            $productoData = substr($productoData, 0, -2);
+                                        }
                                         
                                         echo "<tr>";
                                             echo "<td>" . $row['id'] . "</td>";
-                                            echo "<td>" . $row['id_compra'] . /*($productoData ? (" - Producto: " . $productoData) : "") .*/ "</td>";
-                                            echo "<td>" . $row['id_usuario'] . ($userData ? (": " . $userData) : "") . "</td>";
+                                            echo "<td>" . $row['id_compra'] . ($productoData ? (" - Productos: " . $productoData) : "...") . "</td>";
+                                            echo "<td>" . $row['id_usuario'] . ($userData ? (": " . $userData) : "?") . "</td>";
                                             echo "<td>" . $row['comentario'] . "</td>";
                                             echo "<td>";
                                                 // echo '<a href="read.php?id='. $row['id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
