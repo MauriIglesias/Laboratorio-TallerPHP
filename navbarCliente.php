@@ -5,16 +5,7 @@
       session_start();
       include("conex.php");
 
-      $_SESSION['carrito']=$carrito_mio;
-
-      // contamos nuestro carrito
-      if(isset($_SESSION['carrito'])){
-          for($i=0;$i<=count($carrito_mio)-1;$i ++){
-          if($carrito_mio[$i]!=NULL){ 
-          $total_cantidad = $carrito_mio['cantidad'];
-          $total_cantidad ++ ;
-          $totalcantidad += $total_cantidad;
-          }}}
+      
     ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,6 +30,13 @@
 <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
 <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
 <meta name="theme-color" content="#7952b3">
 
 
@@ -63,6 +61,12 @@
     <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
+      <?php
+     $carrito_mio=$_SESSION['carrito'];
+     $_SESSION['carrito']=$carrito_mio;
+     $cantidad=$_SESSION['cantidad'];
+     $_SESSION['cantidad']=$cantidad;
+      ?>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -84,14 +88,11 @@
                 <a class="nav-link" href="index.php">logout</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i> <?php echo $totalcantidad; ?></a>
+              <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i> <?php echo $cantidad; ?></a>
               </li>
 
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            
           </div>
         </div>
       </nav>
@@ -155,7 +156,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Comprar</button>
+        	<a type="button" class="btn btn-primary" href="comprar.php">Vaciar carrito</a>
         <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
       </div>
     </div>
