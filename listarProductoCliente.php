@@ -33,15 +33,9 @@
     ?>
 
             <br />
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <tr>
-                        <th>Imagen</th>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                    </tr>
+            <div class="container mt-5">
+                <div class="row" style="justify-content: center;">
+
                     <?php
 
                         $sql = mysqli_query($con, "SELECT * FROM producto ORDER BY id ASC");
@@ -59,22 +53,20 @@
                                 $cantidad = (int) $cantidad_row[0];
                                 if ($cantidad > 0) {
                                     echo '
-                                <tr>
-                                <td><img src="'.$imagen_url.'" style="max-height:100px"</td>
-                                <td>'.$row['id'].'</td>
-                                <td><a href="detallesProducto.php?productId='.$row['id'].'"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> '.$row['nombre'].'</a></td>
-                                                            <td>'.$row['precio'].'</td>
-                                                            <td>'.$cantidad.'</td>
-                                <td>';
-                            
-                                echo '
-                                </td>
-                                <td>
-                                // MODIFICAR PARA AGREGAR AL CARRITO
-                                <a href="modificarProductoAdmin.php?productId='.$row['id'].'" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                                <a href="listarProductoAdmin.php?aksi=delete&productId='.$row['id'].'" title="Eliminar" onclick="return confirm(\'Esta seguro de borrar los datos '.$row['nombre'].'?\')" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                                </td>
-                                </tr>
+                                    <div class="card m-4" style="width: 18rem;">
+                                        <form id="formulario" name="formulario" method="post" action="cart.php">
+                                            <input name="id" type="hidden" id="id" value="'.$row['id'].'" />
+                                            <input name="precio" type="hidden" id="precio" value="'.$row['precio'].'" />
+                                            <input name="nombre" type="hidden" id="nombre" value="'.$row['nombre'].'" />
+                                            <input name="cantidad" type="hidden" id="cantidad" value="'.$cantidad.'" class="pl-2" />
+                                            <img src="'.$imagen_url.'" class="card-img-top" style="height:200px">
+                                                <div class="card-body">
+                                                        <h5 class="card-title">'.$row['nombre'].'</h5>
+                                                        <p class="card-text">'.$cantidad.'</p>
+                                                        <button class="btn btn-primary" type="submit" ><i class="fas fa-shopping-cart"></i> Añadir al carrito</button>
+                                                </div>
+                                        </form>
+                                    </div>
                                 ';
                                 } 
                             }
