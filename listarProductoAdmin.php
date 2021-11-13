@@ -37,7 +37,7 @@
             if(mysqli_num_rows($select) == 0){
                 echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos de Producto.</div>';
             }else{
-                $pseudo_delete = mysqli_query($con, "UPDATE producto SET cantidad='$cantidad' WHERE id='$productId'") or die(mysqli_error());
+                $pseudo_delete = mysqli_query($con, "UPDATE producto_cantidad SET cantidad=0 WHERE id_producto='$productId'") or die(mysqli_error());
                 if($pseudo_delete){
                     echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Datos eliminados con exito.</div>';
                 }else{
@@ -47,17 +47,6 @@
         }   
     ?>
 
-            <!-- <form class="form-inline" method="get">
-                <div class="form-group">
-                    <select name="filter" class="form-control" onchange="form.submit()">
-                        <option value="0">Filtros de datos de empleados</option>
-                        <?php $filter = (isset($_GET['filter']) ? strtolower($_GET['filter']) : NULL);  ?>
-                        <option value="1" <?php if($filter=='Tetap' ){ echo 'selected' ; } ?>>Fijo</option>
-                        <option value="2" <?php if($filter=='Kontrak' ){ echo 'selected' ; } ?>>Contratado</option>
-                        <option value="3" <?php if($filter=='Outsourcing' ){ echo 'selected' ; } ?>>Outsourcing</option>
-                    </select>
-                </div>
-            </form> -->
             <br />
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
@@ -66,7 +55,7 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Precio</th>
-                        <th>Stock</th>
+                        <th>Cantidad</th>
                     </tr>
                     <?php
 
@@ -82,9 +71,9 @@
                                 $imagen_url = $imagen_row[0];
                                 $cantidad_query = mysqli_query($con, "SELECT cantidad FROM producto_cantidad WHERE id_producto='$row_id'");
                                 $cantidad_row = mysqli_fetch_row($cantidad_query);
-                                $cantidad = $cantidad_row[0];
-
-                                echo '
+                                $cantidad = (int) $cantidad_row[0];
+                                if ($cantidad > 0) {
+                                    echo '
                                 <tr>
                                 <td><img src="'.$imagen_url.'" style="max-height:100px"</td>
                                 <td>'.$row['id'].'</td>
@@ -102,6 +91,7 @@
                                 </td>
                                 </tr>
                                 ';
+                                } 
                             }
                         }
                     ?>
