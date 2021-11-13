@@ -10,20 +10,16 @@
 			$cantidad=$_POST['cantidad'];
 			$num=0;
      		$carrito_mio[]=array("id"=>$id,"nombre"=>$nombre,"precio"=>$precio,"cantidad"=>$cantidad);
-             $_SESSION['cantidad'] ++;
+            
  		}
 	}else{
 		$titulo=$_POST['titulo'];
 		$precio=$_POST['precio'];
 		$cantidad=$_POST['cantidad'];
 		$carrito_mio[]=array("id"=>$id,"nombre"=>$nombre,"precio"=>$precio,"cantidad"=>$cantidad);
-        $_SESSION['cantidad'] = 1;
+
 	}
-	if(isset($_SESSION['cantidad'])){
-        $_SESSION['cantidad'] ++;
-    }else{
-        $_SESSION['cantidad'] = 0;
-    }
+	
 
 $_SESSION['carrito']=$carrito_mio;
 

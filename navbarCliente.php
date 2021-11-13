@@ -85,11 +85,18 @@
     <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-      <?php
+      <?php 
+    $total_cantidad =0;
      $carrito_mio=$_SESSION['carrito'];
      $_SESSION['carrito']=$carrito_mio;
-     $cantidad=$_SESSION['cantidad'];
-     $_SESSION['cantidad']=$cantidad;
+     if(isset($_SESSION['carrito'])){
+     
+      for($i=0;$i<=count($carrito_mio)-1;$i ++){
+        if($carrito_mio[$i]!=NULL){ 
+          $total_cantidad ++ ;
+        }
+      }
+    }
       ?>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -112,7 +119,10 @@
                 <a class="nav-link" href="index.php">logout</a>
               </li>
               <li class="nav-item">
-                	<a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i> <?php echo $cantidad; ?></a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_cart">Carrito</button>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i> <?php echo $total_cantidad; ?></a>
               </li>
 
             </ul>
@@ -122,8 +132,8 @@
       </nav>
 
 
-    <!-- MODAL CARRITO -->
-<div class="modal fade" id="modal_cart" name="modal_cart" tabindex="-1"  aria-hidden="true">
+      <!-- MODAL CARRITO -->
+<div class="modal fade" id="modal_cart" tabindex="-1"  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -147,7 +157,7 @@
             ?>
 							<li class="list-group-item d-flex justify-content-between lh-condensed">
 								<div class="row col-12" >
-									<div class="col-6 p-0" style="text-align: left; color: #000000;"><h6 class="my-0">Cantidad: <?php echo $carrito_mio[$i]['cantidad'] ?> : <?php echo $carrito_mio[$i]['nombre']; ?></h6>
+									<div class="col-6 p-0" style="text-align: left; color: #000000;"><h6 class="my-0">Cantidad: <?php echo $carrito_mio[$i]['cantidad'] ?> : <?php echo $carrito_mio[$i]['nombre']; // echo substr($carrito_mio[$i]['nombre'],0,10); echo utf8_decode($titulomostrado)."..."; ?></h6>
 									</div>
 									<div class="col-6 p-0"  style="text-align: right; color: #000000;" >
 									<span   style="text-align: right; color: #000000;"><?php echo $carrito_mio[$i]['precio'] * $carrito_mio[$i]['cantidad'];    ?> $</span>
@@ -180,7 +190,7 @@
 
       </div>
       <div class="modal-footer">
-        	<a type="button" class="btn btn-primary" href="comprar.php">Vaciar carrito</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
       </div>
     </div>
@@ -188,5 +198,8 @@
 </div>
 <!-- END MODAL CARRITO -->
 
-  </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js"></script>
+</body>
 </html>
