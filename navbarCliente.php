@@ -178,14 +178,17 @@
 							for($i=0;$i<=count($carrito_mio)-1;$i ++){
 							if($carrito_mio[$i]!=NULL){ 
 							$total=$total + ($carrito_mio[$i]['precio'] * $carrito_mio[$i]['cantidad']);
-							}}}
-							echo $total; ?> $</strong>
+							}
+            }
+            echo $total;
+            }
+							 ?> $</strong>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			
+			<! falta metodo de pago >
 
 
       </div>
