@@ -19,7 +19,8 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <?php include("navbarAdmin.php"); ?>	</nav>
+        <?php include("navbarAdmin.php"); ?>	
+	</nav>
 	<div class="container">
 		<div class="content">
 			<h2>Nuevo Producto &raquo; Cargar datos</h2>
@@ -28,15 +29,6 @@
 			<?php
             $con = Conectarse();
 			if(isset($_POST['add'])){
-				// $codigo		     = mysqli_real_escape_string($con,(strip_tags($_POST["codigo"],ENT_QUOTES)));//Escanpando caracteres 
-				// $nombres		     = mysqli_real_escape_string($con,(strip_tags($_POST["nombres"],ENT_QUOTES)));//Escanpando caracteres 
-				// $lugar_nacimiento	 = mysqli_real_escape_string($con,(strip_tags($_POST["lugar_nacimiento"],ENT_QUOTES)));//Escanpando caracteres 
-				// $fecha_nacimiento	 = mysqli_real_escape_string($con,(strip_tags($_POST["fecha_nacimiento"],ENT_QUOTES)));//Escanpando caracteres 
-				// $direccion	     = mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));//Escanpando caracteres 
-				// $telefono		 = mysqli_real_escape_string($con,(strip_tags($_POST["telefono"],ENT_QUOTES)));//Escanpando caracteres 
-				// $puesto		 = mysqli_real_escape_string($con,(strip_tags($_POST["puesto"],ENT_QUOTES)));//Escanpando caracteres 
-				// $estado			 = mysqli_real_escape_string($con,(strip_tags($_POST["estado"],ENT_QUOTES)));//Escanpando caracteres 
-				
                 $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
                 $precio = (float) mysqli_real_escape_string($con,(strip_tags($_POST["precio"],ENT_QUOTES)));
                 $cantidad = (int) mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
@@ -51,7 +43,7 @@
                     if($insert){
                         $sql = mysqli_query($con, "SELECT * FROM producto WHERE nombre='$nombre'");
                         $id_producto = (int) mysqli_fetch_assoc($sql)['id'];
-                        echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
+                        // echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
                     }else{
                         echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. No se pudo guardar los datos !</div>';
                     }
@@ -64,7 +56,7 @@
                 $insert = mysqli_query($con, "INSERT INTO producto_cantidad(id_producto, cantidad)
 															VALUES('$id_producto','$cantidad')") or die(mysqli_error($con));
                 if($insert){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
+                    // echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
                 }else{
                     echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. No se pudo guardar los datos !</div>';
                 }
@@ -73,7 +65,7 @@
                 $insert = mysqli_query($con, "INSERT INTO producto_imagen(id_producto, imagen)
 															VALUES('$id_producto','$imagen')") or die(mysqli_error($con));
                 if($insert){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Guardado con éxito!div>';
+                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Guardado con éxito!</div>';
                 }else{
                     echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. No se pudo guardar los datos !</div>';
                 }
