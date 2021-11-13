@@ -157,7 +157,7 @@
             ?>
 							<li class="list-group-item d-flex justify-content-between lh-condensed">
 								<div class="row col-12" >
-									<div class="col-6 p-0" style="text-align: left; color: #000000;"><h6 class="my-0">Cantidad: <?php echo $carrito_mio[$i]['cantidad'] ?> : <?php echo $carrito_mio[$i]['nombre']; // echo substr($carrito_mio[$i]['nombre'],0,10); echo utf8_decode($titulomostrado)."..."; ?></h6>
+									<div class="col-6 p-0" style="text-align: left; color: #000000;"><h6 class="my-0"><?php echo $carrito_mio[$i]['nombre']; ?> $ <?php echo $carrito_mio[$i]['precio'] ?>x<?php echo $carrito_mio[$i]['cantidad'] ?></h6>
 									</div>
 									<div class="col-6 p-0"  style="text-align: right; color: #000000;" >
 									<span   style="text-align: right; color: #000000;"><?php echo $carrito_mio[$i]['precio'] * $carrito_mio[$i]['cantidad'];    ?> $</span>
@@ -189,7 +189,7 @@
 				</div>
 			</div>
 			<! falta metodo de pago >
-
+      
 
       </div>
       <div class="modal-footer">
@@ -200,7 +200,6 @@
   </div>
 </div>
 <!-- END MODAL CARRITO -->
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js"></script>
