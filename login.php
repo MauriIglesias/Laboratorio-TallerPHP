@@ -19,7 +19,7 @@ if($filas){
     $resultado2=mysqli_query($conexion,$consulta2);
     $filas2=mysqli_num_rows($resultado2);
     if($filas2){
-        header("location:productoCliente.php");
+        header("location:listarProductoCliente.php");
     }else{
         header("location:agregarProductoAdmin.php");
     }
