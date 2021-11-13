@@ -64,7 +64,7 @@
                 <a class="nav-link active" aria-current="page" href="agregarProductoAdmin.php">Agregar Producto</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="clienteAdmin.php">Clientes</a>
+                <a class="nav-link active" aria-current="page" href="listarUsuarioAdmin.php">Clientes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="mensajeAdmin.php">Mensajes</a>
