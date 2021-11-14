@@ -89,7 +89,7 @@
                 <a class="nav-link" aria-current="page" href="perfilCliente.php" >Perfil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="limpiar.php">logout</a>
+                <a class="nav-link" href="limpiar.php">Logout</a>
               </li>
               
               <li class="nav-item">

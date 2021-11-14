@@ -62,7 +62,7 @@ ob_start();
 
                 if(isset($_GET['eliminar'])) {
                     if($_GET['eliminar'] == 'eliminar'){
-                        $delete_usuario = mysqli_query($con, "DELETE FROM usuario WHERE id='$idUsuario'") or die(mysqli_error($con));
+                        $delete_usuario = mysqli_query($con, "UPDATE usuario SET habilitado=0 WHERE id='$idUsuario'") or die(mysqli_error($con));
                         if($delete_usuario){
                             header("Location: limpiar.php", true);
                         }else{

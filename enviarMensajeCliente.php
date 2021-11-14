@@ -44,11 +44,11 @@ ob_start();
                 if (isset($_GET['idCompra'])){
                     $compraId = mysqli_real_escape_string($con,(strip_tags($_GET["idCompra"],ENT_QUOTES)));
                 }else{
-                    header("location:mainCliente.php");
+                    header("location:listarProductoCliente.php");
                 }
                 $sql = mysqli_query($con, "SELECT * FROM compra WHERE id='$compraId' AND id_usuario='$sessionUserId'");
                 if(mysqli_num_rows($sql) == 0){
-                    header("location:mainCliente.php");
+                    header("location:listarProductoCliente.php");
                     //ob_end_flush();
                     //die();
                 }else{

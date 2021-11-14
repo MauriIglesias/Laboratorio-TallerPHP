@@ -66,7 +66,7 @@
                 <a class="nav-link" href="mensajeAdmin.php">Mensajes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php">logout</a>
+                <a class="nav-link" href="index.php">Logout</a>
               </li>
               </li>
 

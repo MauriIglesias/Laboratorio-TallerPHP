@@ -27,7 +27,7 @@ if($filas){
 
 }else{
     include("index.php");
-    echo "<h1 class='bad'>ERROR DE AUTENTIFICACION</h1>";
+    echo "<h1 class='bad'>ERROR DE AUTENTICACION</h1>";
 }
 mysqli_free_result($resultado);
 mysqli_close($conexion);
