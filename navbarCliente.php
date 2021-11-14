@@ -189,11 +189,33 @@
 				</div>
 			</div>
 			<! falta metodo de pago >
-      
+      <?php
+      $ser = Conectarse();
+      $mpago = mysqli_query($ser, "SELECT * FROM pago");
+
+      echo '<form id="formulario" name="formulario" method="post" action="comprar.php">
+            <select class="form-select" aria-label="Default select example" id="pago">
+            <option selected>Eleguir metodo de Pago</option>';
+            if($mpago){
+              while($lista = mysqli_fetch_assoc($mpago)){
+                $lista_id = $lista['id'];
+                $lista_nombre = $lista['nombre'];
+
+                echo '<option value="'.$lista_id.'">'.$lista_nombre.'</option>';
+
+               }
+               echo '</select>
+              
+               ';
+            }
+            
+
+      ?>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <a type="button" type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Comprar</button>
+        </form>
         <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
       </div>
     </div>
