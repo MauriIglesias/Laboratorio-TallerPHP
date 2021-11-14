@@ -3,7 +3,11 @@ include("conex.php");
 $con = Conectarse();
 if(isset($_SESSION['carrito'])){
     $compra = $_SESSION['carrito'];
-    $pago = 1; //$_SESSION['pago']; $_POST['pago'];
+    $pago = $_POST['pago']; //$_SESSION['pago']; $_POST['pago'];
+    if(isset($_POST['pago']))
+        echo $_POST['pago'];
+    echo $pago;
+    echo 'aqui deveria estar';
     $total=0;
     for($i=0;$i<=count($compra)-1;$i ++){
     if($compra[$i]!=NULL){ 
@@ -26,8 +30,13 @@ if(isset($_SESSION['carrito'])){
                                                 VALUES('$id_compra', '$id_producto')") or die(mysqli_error($con));
 
                 $cantidad_query = mysqli_fetch_row(mysqli_query($con, "SELECT cantidad FROM producto_cantidad WHERE id_producto='$id_producto'"));
-                $cantidad =$cantidad_query['cantidad'] - $compra[$i]['cantidad'];
+                $c = $cantidad_query[0];
+                $cantidad =$c - $compra[$i]['cantidad'];
+
                 $update_producto_cantidad = mysqli_query($con, "UPDATE producto_cantidad SET cantidad='$cantidad' WHERE id_producto='$id_producto'") or die(mysqli_error());
+
+                
+                
 
 
                 }}
@@ -37,6 +46,11 @@ if(isset($_SESSION['carrito'])){
 }
 
 
+unset($_SESSION['carrito']);
+
+
+$carrito_mio=$_SESSION['carrito'];
+$_SESSION['carrito']=$carrito_mio;
 
 
 header("Location: ".$_SERVER['HTTP_REFERER']."");

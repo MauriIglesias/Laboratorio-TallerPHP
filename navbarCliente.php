@@ -116,7 +116,7 @@
                 <a class="nav-link" aria-current="page" href="perfilCliente.php" >Perfil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php">logout</a>
+                <a class="nav-link" href="limpiar.php">logout</a>
               </li>
               
               <li class="nav-item">
@@ -129,7 +129,7 @@
         </div>
       </nav>
 
-
+<form action="comprar.php" method="POST">
       <!-- MODAL CARRITO -->
 <div class="modal fade" id="modal_cart" tabindex="-1"  aria-hidden="true">
   <div class="modal-dialog">
@@ -188,8 +188,8 @@
 			</div>
 			<! falta metodo de pago >
             
-      <form action="comprar.php" method="POST">
-        <select class="form-select"  name="pago" id="pago" >
+      
+        <select class="form-select" name="pago">
         <?php
         $ser = Conectarse();
         $mpago = mysqli_query($ser, "SELECT * FROM pago");
@@ -200,18 +200,15 @@
             echo '<option value="'.$lista_id.'">'.$lista_nombre.'</option>';
           }
         }   
-        // $_SESSION['pago'] = $_POST['pago'];
-            //$_SESSION['pago'] = $_REQUEST['pago'];
-         
-
           ?>
           </select>
+          <input type="submit" class="btn btn-primary" value = "Comprar"/>
+       
 
           <div class="modal-footer">
-            <a type="button" type="submit" name="Comprar" class="btn btn-primary" href="comprar.php">Comprar</button>
             <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
           </div>
-        </form>
+        
 
           
 
@@ -221,6 +218,7 @@
   </div>
 </div>
 <!-- END MODAL CARRITO -->
+</form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js"></script>
