@@ -118,9 +118,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="index.php">logout</a>
               </li>
-              <li class="nav-item">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_cart">Carrito</button>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i> <?php echo $total_cantidad; ?></a>
               </li>
