@@ -10,12 +10,10 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
 
-    
-
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+<link href="bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -51,25 +49,27 @@
     
 <main class="form-signin">
   <form action="login.php" method="post">
-    <img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <img class="img-fluid w-25 h-25" src="electrodomesticos.png" alt="">
     <h1 class="h3 mb-3 fw-normal">Login</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" name="logimeEmail" placeholder="name@example.com">
+      <input type="email" class="form-control" name="logimeEmail" placeholder="name@example.com" required>
       <label for="floatingInput">Email address</label>
     </div>
+    <br>
     <div class="form-floating">
-      <input type="password" class="form-control" name="loginPassword" placeholder="Password">
+      <input type="password" class="form-control" name="loginPassword" placeholder="Password" required>
       <label for="floatingPassword">Password</label>
     </div>
 
     <!-- Falta validacion y ver de identificar tipos-->
     <br>
-    <input type="submit" class="w-100 btn btn-lg btn-primary" > Login </a>
+    <input type="submit" class="w-50 btn btn-lg btn-primary"> </a>
+    <br>
     <br>
 
 
-    <a href='registro.php'  type="submit" class="w-100 btn btn-lg btn-primary" > Registro </a>
+    <a href='registro.php' type="submit" class="w-50 btn btn-lg btn-primary" > Registro </a>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>
