@@ -32,12 +32,10 @@
         $con = Conectarse();
         if(isset($_GET['method']) == 'put'){
             if(isset($_GET['estado']) == 'true'){
-                $habilitado=1;
-                echo '<p>Habilitando</p>';
+                $habilitado=0;
             }
             if(isset($_GET['estado']) == 'false'){
-                $habilitado=0;
-                echo '<p>Deshabilitando</p>';
+                $habilitado=1;
             }
             $usuarioId = mysqli_real_escape_string($con,(strip_tags($_GET["usuarioId"],ENT_QUOTES)));
             $select = mysqli_query($con, "SELECT * FROM usuario WHERE id='$usuarioId'");
