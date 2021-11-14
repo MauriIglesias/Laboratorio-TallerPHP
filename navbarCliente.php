@@ -39,7 +39,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="js/jquery.magnific-popup.js"></script>
     <script type="text/javascript" src="js/jquery.modal.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript"></script>
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -85,7 +85,7 @@
     <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-      <?php 
+      <?php
     $total_cantidad =0;
      $carrito_mio=$_SESSION['carrito'];
      $_SESSION['carrito']=$carrito_mio;
