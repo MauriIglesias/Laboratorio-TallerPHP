@@ -38,7 +38,7 @@
             if(mysqli_num_rows($select) == 0){
                 echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button> No se encontraron datos de Producto.</div>';
             }else{
-                $pseudo_delete = mysqli_query($con, "UPDATE producto_cantidad SET cantidad=0 WHERE id_producto='$productId'") or die(mysqli_error());
+                $pseudo_delete = mysqli_query($con, "UPDATE producto_cantidad SET cantidad=-1 WHERE id_producto='$productId'") or die(mysqli_error());
                 if($pseudo_delete){
                     echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button> Datos eliminados con exito.</div>';
                 }else{
@@ -73,7 +73,7 @@
                                 $cantidad_query = mysqli_query($con, "SELECT cantidad FROM producto_cantidad WHERE id_producto='$row_id'");
                                 $cantidad_row = mysqli_fetch_row($cantidad_query);
                                 $cantidad = (int) $cantidad_row[0];
-                                
+                                if ($cantidad >= 0) {
                                     echo '
                                 <tr>
                                 <td><img src="'.$imagen_url.'" style="max-height:100px"</td>
@@ -92,7 +92,7 @@
                                 </td>
                                 </tr>
                                 ';
-                                
+                                } 
                             }
                         }
                     ?>
