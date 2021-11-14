@@ -22,7 +22,7 @@ if($filas){
     if($filas2){
         header("location:listarProductoCliente.php");
     }else{
-        header("location:agregarProductoAdmin.php");
+        header("location:listarProductoAdmin.php");
     }
 
 }else{
