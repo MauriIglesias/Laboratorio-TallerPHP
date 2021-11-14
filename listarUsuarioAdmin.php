@@ -30,26 +30,27 @@
             <hr />
     <?php
         $con = Conectarse();
-        if(isset($_GET['method']) == 'put'){
-            if(isset($_GET['estado']) == 'true'){
-                $habilitado=0;
-            }
-            if(isset($_GET['estado']) == 'false'){
-                $habilitado=1;
-            }
-            $usuarioId = mysqli_real_escape_string($con,(strip_tags($_GET["usuarioId"],ENT_QUOTES)));
-            $select = mysqli_query($con, "SELECT * FROM usuario WHERE id='$usuarioId'");
-            if(mysqli_num_rows($select) == 0){
-                echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontro el usuario.</div>';
-            }else{
-                $pseudo_delete = mysqli_query($con, "UPDATE usuario SET habilitado='$habilitado' WHERE id='$usuarioId'") or die(mysqli_error($con));
-                if($pseudo_delete){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Usuario habilitado con exito.</div>';
+        if(isset($_GET['method'])) {
+            if($_GET['method'] == 'put'){
+                $estado = $_GET['estado'];
+                $usuarioId = mysqli_real_escape_string($con,(strip_tags($_GET["usuarioId"],ENT_QUOTES)));
+                $select = mysqli_query($con, "SELECT * FROM usuario WHERE tipo=1 and id='$usuarioId'");
+                if(mysqli_num_rows($select) == 0){
+                    echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontro el usuario.</div>';
                 }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Usuario deshabilitado con exito.</div>';
+                    $pseudo_update = mysqli_query($con, "UPDATE usuario SET habilitado='$estado' WHERE tipo=1 and id='$usuarioId'") or die(mysqli_error($con));
+                    if($pseudo_update){
+                        if($estado == 1) {
+                            echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Usuario habilitado con exito.</div>';
+                        } else {
+                            echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Usuario deshabilitado con exito.</div>';
+                        }
+                    }else{
+                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error al cambiar el estado.</div>';
+                    }
                 }
             }
-        }   
+        }
     ?>
             <br />
             <div class="table-responsive">
@@ -62,7 +63,7 @@
                         <th>Estado</th>
                     </tr>
                     <?php
-                        $sql = mysqli_query($con, "SELECT * FROM usuario ORDER BY id ASC");
+                        $sql = mysqli_query($con, "SELECT * FROM usuario u where u.tipo=1 ORDER BY id ASC");
                         if(mysqli_num_rows($sql) == 0){
                             echo '<tr><td colspan="8">No hay usuarios registrados.</td></tr>';
                         }else{
@@ -80,9 +81,9 @@
                                 <td>'.$row['apellido'].'</td>
                                 <td>'.$row['habilitado'].' ';
                                 if ($row['habilitado'] == 0) {
-                                    echo '<a href="listarUsuarioAdmin.php?method=put&estado=true&usuarioId='.$row['id'].'" title="Habilitar" onclick="return confirm(\'Esta seguro de habilitar el usuario '.$row['nombre'].'?\')" class="btn btn-success btn-sm"></a>';
+                                    echo '<a href="listarUsuarioAdmin.php?method=put&estado=1&usuarioId='.$row['id'].'" title="Habilitar" onclick="return confirm(\'Esta seguro de habilitar el usuario '.$row['nombre'].'?\')" class="btn btn-success btn-sm"></a>';
                                 } else {
-                                    echo '<a href="listarUsuarioAdmin.php?method=put&estado=false&usuarioId='.$row['id'].'" title="Deshabilitar" onclick="return confirm(\'Esta seguro de deshabilitar el usuario '.$row['nombre'].'?\')" class="btn btn-danger btn-sm"></a>';
+                                    echo '<a href="listarUsuarioAdmin.php?method=put&estado=0&usuarioId='.$row['id'].'" title="Deshabilitar" onclick="return confirm(\'Esta seguro de deshabilitar el usuario '.$row['nombre'].'?\')" class="btn btn-danger btn-sm"></a>';
                                 }
                                 echo '</td>';
                             }
