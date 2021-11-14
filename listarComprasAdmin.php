@@ -16,6 +16,9 @@
         .content {
             margin-top: 80px;
         }
+        a:link {
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -30,27 +33,6 @@
             <hr />
     <?php
         $con = Conectarse();
-        if(isset($_GET['method'])) {
-            if($_GET['method'] == 'put'){
-                $estado = $_GET['estado'];
-                $usuarioId = mysqli_real_escape_string($con,(strip_tags($_GET["usuarioId"],ENT_QUOTES)));
-                $select = mysqli_query($con, "SELECT * FROM usuario WHERE tipo=1 and id='$usuarioId'");
-                if(mysqli_num_rows($select) == 0){
-                    echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontro el usuario.</div>';
-                }else{
-                    $pseudo_update = mysqli_query($con, "UPDATE usuario SET habilitado='$estado' WHERE tipo=1 and id='$usuarioId'") or die(mysqli_error($con));
-                    if($pseudo_update){
-                        if($estado == 1) {
-                            echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Usuario habilitado con exito.</div>';
-                        } else {
-                            echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Usuario deshabilitado con exito.</div>';
-                        }
-                    }else{
-                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error al cambiar el estado.</div>';
-                    }
-                }
-            }
-        }
     ?>
             <br />
             <div class="table-responsive">
@@ -58,24 +40,42 @@
                     <tr>
                         <th>ID</th>
                         <th>Id Usuario</th>
+                        <th>Nom Usuario</th>
+                        <th>Ape Usuario</th>
                         <th>Id Pago</th>
+                        <th>Tipo Pago</th>
                         <th>Monto</th>
                     </tr>
                     <?php
                         $sql = mysqli_query($con, "SELECT * FROM compra ORDER BY id ASC");
                         if(mysqli_num_rows($sql) == 0){
-                            echo '<tr><td colspan="8">No hay usuarios registrados.</td></tr>';
+                            echo '<tr><td colspan="8">No hay compras realizadas.</td></tr>';
                         }else{
                             while($row = mysqli_fetch_assoc($sql)){
                                 $row_id = $row['id'];
                                 $row_IdUsuario = $row['id_usuario'];
+                                $selectUsuario = mysqli_query($con, "SELECT * FROM usuario WHERE id='$row_IdUsuario'") or die(mysqli_error($con));
+                                while($rowUser = mysqli_fetch_assoc($selectUsuario)) {
+                                    $row_nombreUser = $rowUser['nombre'];
+                                    $row_apellidoUser = $rowUser['apellido'];
+                                }
                                 $row_IdPago= $row['id_pago'];
+                                $selectPago = mysqli_query($con, "SELECT * FROM pago WHERE id='$row_IdPago'") or die(mysqli_error($con));
+                                while($rowPago = mysqli_fetch_assoc($selectPago)) {
+                                    $row_nombrePago = $rowPago['nombre'];
+                                }
                                 $row_monto= $row['monto'];
                                 echo '
                                 <tr>
-                                <td>'.$row['id'].'</td>
+                                <td><a href="infoCompraAdmin.php?compraId='.$row['id'].'">'.$row['id'].'</a></td>
                                 <td>'.$row['id_usuario'].'</td>
+
+                                <td>'.$row_nombreUser.'</td>
+                                <td>'.$row_apellidoUser.'</td>
+
                                 <td>'.$row['id_pago'].'</td>
+                                <td>'.$row_nombrePago.'</td>
+
                                 <td>'.$row['monto'].'</td>';
                                 
                             }
