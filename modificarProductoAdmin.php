@@ -52,7 +52,7 @@
                     if($update_producto){
                         header("Location: modificarProductoAdmin.php?productId=".$productId."&result=success");
                     }else{
-                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error, no se pudo guardar los datos.</div>';
+                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X;</button>Error, no se pudo guardar los datos.</div>';
                     }
                 }
 

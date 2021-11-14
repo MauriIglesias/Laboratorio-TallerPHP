@@ -8,9 +8,7 @@
 	<title>Agregar Productos</title>
 
 	<!-- Bootstrap -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/bootstrap-datepicker.css" rel="stylesheet">
-	<link href="css/style_nav.css" rel="stylesheet">
+	<!-- <link href="bootstrap.min.css" rel="stylesheet"> -->
 	<style>
 		.content {
 			margin-top: 80px;
@@ -45,11 +43,11 @@
                         $id_producto = (int) mysqli_fetch_assoc($sql)['id'];
                         // echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
                     }else{
-                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. No se pudo guardar los datos !</div>';
+                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close btn btn-sm btn-danger" data-dismiss="alert" aria-hidden="true">X</button>Error. No se pudo guardar los datos !</div>';
                     }
 					 
 				}else{
-					echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. Ya existe producto!</div>';
+					echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close btn btn-sm btn-danger" data-dismiss="alert" aria-hidden="true">X</button>Error. Ya existe producto!</div>';
 				}
 
                 // Guardo cantidad en tabla PRODUCTO_CANTIDAD
@@ -58,17 +56,19 @@
                 if($insert){
                     // echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
                 }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. No se pudo guardar los datos !</div>';
+                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close btn btn-sm btn-danger" data-dismiss="alert" aria-hidden="true">X</button>Error. No se pudo guardar los datos !</div>';
                 }
 
                 // Guardo link a imagen en tabla PRODUCTO_IMAGEN
                 $insert = mysqli_query($con, "INSERT INTO producto_imagen(id_producto, imagen)
 															VALUES('$id_producto','$imagen')") or die(mysqli_error($con));
                 if($insert){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Guardado con éxito!</div>';
+                    echo '<div class="alert alert-success alert-dismissable" id="success-alert">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>Producto guardado</div>';
                 }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. No se pudo guardar los datos !</div>';
+                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>Error. No se pudo guardar los datos !</div>';
                 }
+				// header("Location:agregarProductoAdmin.php");
 			}
 			?>
 
@@ -119,16 +119,16 @@
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
 						<input type="submit" name="add" class="btn btn-sm btn-primary" value="Guardar datos">
-						<a href="mainCliente.php" class="btn btn-sm btn-danger">Cancelar</a>
+						<a href="mainAdmin.php" class="btn btn-sm btn-danger">Cancelar</a>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="bootstrap.bundle.min.js"></script>
+	<link href="bootstrap.min.css" rel="stylesheet"> -->
 	<script>
 	</script>
 </body>

@@ -36,13 +36,13 @@
             $productId = mysqli_real_escape_string($con,(strip_tags($_GET["productId"],ENT_QUOTES)));
             $select = mysqli_query($con, "SELECT * FROM producto WHERE id='$productId'");
             if(mysqli_num_rows($select) == 0){
-                echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos de Producto.</div>';
+                echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button> No se encontraron datos de Producto.</div>';
             }else{
                 $pseudo_delete = mysqli_query($con, "UPDATE producto_cantidad SET cantidad=0 WHERE id_producto='$productId'") or die(mysqli_error());
                 if($pseudo_delete){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Datos eliminados con exito.</div>';
+                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button> Datos eliminados con exito.</div>';
                 }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar el producto.</div>';
+                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button> Error, no se pudo eliminar el producto.</div>';
                 }
             }
         }   
