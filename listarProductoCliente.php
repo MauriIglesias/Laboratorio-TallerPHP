@@ -58,13 +58,13 @@
                                             <input name="id" type="hidden" id="id" value="'.$row['id'].'" />
                                             <input name="precio" type="hidden" id="precio" value="'.$row['precio'].'" />
                                             <input name="nombre" type="hidden" id="nombre" value="'.$row['nombre'].'" />
-                                            <input name="cantidad" type="hidden" id="cantidad" value="'.$cantidad.'" class="pl-2" />
                                             <img src="'.$imagen_url.'" class="card-img-top" style="height:200px">
                                                 <div class="card-body">
                                                         <h5 class="card-title">'.$row['nombre'].'</h5>
                                                         <p class="card-text">'.$cantidad.'</p>
                                                         <button class="btn btn-primary" type="submit" ><i class="fas fa-shopping-cart"></i> Añadir al carrito</button>
                                                 </div>
+                                            <input name="cantidad" type="number" placeholder="Cantidad" required id="cantidad" value="1" class="pl-2" />
                                         </form>
                                     </div>
                                 ';
