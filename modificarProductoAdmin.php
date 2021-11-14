@@ -29,7 +29,7 @@
                 $productId = mysqli_real_escape_string($con,(strip_tags($_GET["productId"],ENT_QUOTES)));
                 $sql = mysqli_query($con, "SELECT * FROM producto WHERE id='$productId'");
                 if(mysqli_num_rows($sql) == 0){
-                    header("Location: mainAdmin.php");
+                    header("Location: listarProductoAdmin.php");
                 }else{
                     $row = mysqli_fetch_assoc($sql);
                     $row_id = $row['id'];
@@ -94,7 +94,7 @@
                     <label class="col-sm-3 control-label">&nbsp;</label>
                     <div class="col-sm-6">
                         <input type="submit" name="save" class="btn btn-sm btn-primary" value="Guardar datos">
-                        <a href="mainAdmin.php" class="btn btn-sm btn-danger">Cancelar</a>
+                        <a href="listarProductoAdmin.php" class="btn btn-sm btn-danger">Cancelar</a>
                     </div>
                 </div>
             </form>
