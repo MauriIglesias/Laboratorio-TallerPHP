@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <?php include("navbarAdmin.php");?>
     </nav>
     <div class="container">
@@ -46,9 +46,9 @@
                     $precio = (float) mysqli_real_escape_string($con,(strip_tags($_POST["precio"],ENT_QUOTES)));
                     $cantidad = (int) mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
                     $imagen = mysqli_real_escape_string($con,(strip_tags($_POST["imagen"],ENT_QUOTES)));
-                    $update_producto = mysqli_query($con, "UPDATE producto SET nombre='$nombre', precio='$precio' WHERE id='$productId'") or die(mysqli_error());
-                    $update_producto_imagen = mysqli_query($con, "UPDATE producto_imagen SET imagen='$imagen' WHERE id_producto='$productId'") or die(mysqli_error());
-                    $update_producto_cantidad = mysqli_query($con, "UPDATE producto_cantidad SET cantidad='$cantidad' WHERE id_producto='$productId'") or die(mysqli_error());
+                    $update_producto = mysqli_query($con, "UPDATE producto SET nombre='$nombre', precio='$precio' WHERE id='$productId'") or die(mysqli_error($con));
+                    $update_producto_imagen = mysqli_query($con, "UPDATE producto_imagen SET imagen='$imagen' WHERE id_producto='$productId'") or die(mysqli_error($con));
+                    $update_producto_cantidad = mysqli_query($con, "UPDATE producto_cantidad SET cantidad='$cantidad' WHERE id_producto='$productId'") or die(mysqli_error($con));
                     if($update_producto){
                         header("Location: modificarProductoAdmin.php?productId=".$productId."&result=success");
                     }else{
@@ -102,8 +102,6 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
 
 </body>
 

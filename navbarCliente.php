@@ -16,54 +16,30 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
 
-    
-
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-
-<link rel="stylesheet" href="css/bootstrap.css">
-    <link href="css/slider.css" rel="stylesheet">
-    <link href="css/lrp.css" rel="stylesheet">
+    
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300,400italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <link href="css/jquery.modal.css" type="text/css" rel="stylesheet" />
-    <link href="css/jquery.modal.theme-xenon.css" type="text/css" rel="stylesheet" />
-    <link href="css/jquery.modal.theme-atlant.css" type="text/css" rel="stylesheet" />
-    <!-- jQuery -->
-    <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap-confirmation.js"></script>
-    <script src="js/npm.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="js/jquery.magnific-popup.js"></script>
-    <script type="text/javascript" src="js/jquery.modal.js"></script>
-    <script type="text/javascript"></script>
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
 <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 <meta name="theme-color" content="#7952b3">
-
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -80,9 +56,6 @@
       }
     </style>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
       <?php
