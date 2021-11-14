@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,8 +52,12 @@
                     </div>
                     <?php
                     // faltaria preguntar la session por si el usuario esta como cliente y sacar el ID de ahi
+                        if (!isset($_SESSION['usuarioid'])){
+                            header("location:index.php");
+                        }
+                        $sessionUserId = $_SESSION['usuarioid'];
                         $con = Conectarse();
-                        $sql = "SELECT * FROM feedback f WHERE f.id_usuario='1'";
+                        $sql = "SELECT * FROM feedback f WHERE f.id_usuario='$sessionUserId'";
                         if($result = mysqli_query($con, $sql)){
                             if(mysqli_num_rows($result) > 0){
                                 

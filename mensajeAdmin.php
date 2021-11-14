@@ -49,7 +49,11 @@
                     </div>
                     <?php
                     // faltaria preguntar la session por si el usuario esta como admin
+                    if (!isset($_SESSION['usuarioid'])){
+                        header("location:index.php");
+                    }
                         $con = Conectarse();
+                        
                         $sql = "SELECT * FROM feedback";
                         if($result = mysqli_query($con, $sql)){
                             if(mysqli_num_rows($result) > 0){

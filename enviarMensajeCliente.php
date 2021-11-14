@@ -23,12 +23,12 @@ ob_start();
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
         <?php
-        $_SESSION['usuarioid'] = 1;
+        //$_SESSION['usuarioid'] = 1;
         if (!isset($_SESSION['usuarioid'])){
             header("location:index.php");
         }else{
             include("navbarCliente.php");
-            $_SESSION['usuarioid'] = 1;
+            //$_SESSION['usuarioid'] = 1;
         }
         ?>
     </nav>

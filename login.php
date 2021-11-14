@@ -15,6 +15,7 @@ if($filas){
     $row = mysqli_fetch_assoc($resultado);
     $_SESSION['usuario']=$row['correo'];
     $_SESSION['usuarioid']=$row['id'];
+    $_SESSION['usuariotipo']=$row['tipo'];
     $consulta2="SELECT*FROM usuario where correo='$usuario' and contrasena='$contraseña' and tipo=1";
     $resultado2=mysqli_query($conexion,$consulta2);
     $filas2=mysqli_num_rows($resultado2);
