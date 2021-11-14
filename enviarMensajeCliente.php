@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,17 +44,13 @@
                 if (isset($_GET['idCompra'])){
                     $compraId = mysqli_real_escape_string($con,(strip_tags($_GET["idCompra"],ENT_QUOTES)));
                 }else{
-                    ob_flush();
                     header("location:mainCliente.php");
-                    ob_end_flush();
-                    die();
                 }
                 $sql = mysqli_query($con, "SELECT * FROM compra WHERE id='$compraId' AND id_usuario='$sessionUserId'");
                 if(mysqli_num_rows($sql) == 0){
-                    ob_flush();
                     header("location:mainCliente.php");
-                    ob_end_flush();
-                    die();
+                    //ob_end_flush();
+                    //die();
                 }else{
                     if(isset($_POST['add'])){
                         $comentario = mysqli_real_escape_string($con,(strip_tags($_POST['comentario'],ENT_QUOTES)));
