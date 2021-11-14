@@ -13,6 +13,9 @@ if(isset($_SESSION['carrito'])){
     $idusuario = $_SESSION['usuarioid'];
     $insert = mysqli_query($con, "INSERT INTO compra(id_usuario , id_pago, monto)
                                                         VALUES($idusuario, $pago, $precio)") or die(mysqli_error($con));
+
+    
+
      if($insert){
         $sql = mysqli_query($con, "SELECT * FROM compra WHERE id_usuario=$idusuario and id_pago=$pago and monto=$precio");
         if($sql){
@@ -22,6 +25,10 @@ if(isset($_SESSION['carrito'])){
                 $id_producto = $compra[$i]['id'];
                 $insert = mysqli_query($con, "INSERT INTO compra(id_compra  , id_producto)
                                                 VALUES($id_compra, $id_producto)") or die(mysqli_error($con));
+
+                $cantidad_query = mysqli_query($con, "SELECT cantidad FROM producto_cantidad WHERE id_producto='$id_producto'");
+                $cantidad =$cantidad_query - $compra[$i]['cantidad'];
+                $update_producto_cantidad = mysqli_query($con, "UPDATE producto_cantidad SET cantidad='$cantidad' WHERE id_producto='$id_producto'") or die(mysqli_error());
 
 
                 }}
