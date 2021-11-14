@@ -57,8 +57,8 @@ if(!$filas4) {
     VALUES (1, 'https://www.precio-calidad.com.ar/wp-content/uploads/2021/03/LED-AOC-32S5295-77G-4-800x800.jpg')") or die(mysqli_error($con));
 }
 if(!$filas5) {
-    $insert13 = mysqli_query($con, "INSERT INTO compra_producto (id_compra, id_producto) 
-    VALUES (1, 1)") or die(mysqli_error($con));
+    $insert13 = mysqli_query($con, "INSERT INTO compra_producto (id_compra, id_producto, cantidad) 
+    VALUES (1, 1, 1)") or die(mysqli_error($con));
 }
 if(!$filas6) {
     $insert14 = mysqli_query($con, "INSERT INTO feedback (id_compra, id_usuario, comentario) 
