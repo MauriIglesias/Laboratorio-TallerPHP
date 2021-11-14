@@ -3,15 +3,13 @@ include("conex.php");
 $con = Conectarse();
 if(isset($_SESSION['carrito'])){
     $compra = $_SESSION['carrito'];
-    $pago = $_POST('pago');
+    $pago = $_SESSION['pago'];
 
     $total=0;
     for($i=0;$i<=count($compra)-1;$i ++){
     if($compra[$i]!=NULL){ 
     $total=$total + ($compra[$i]['precio'] * $compra[$i]['cantidad']);
     }}
-
-
     $idusuario = $_SESSION['usuarioid'];
     $insert = mysqli_query($con, "INSERT INTO compra(id_usuario , id_pago, monto)
                                                         VALUES($idusuario, $pago, $precio)") or die(mysqli_error($con));
@@ -22,7 +20,7 @@ if(isset($_SESSION['carrito'])){
             for($i=0;$i<=count($compra)-1;$i ++){
                 if($compra[$i]!=NULL){ 
                 $id_producto = $compra[$i]['id'];
-                $insert = mysqli_query($con, "INSERT INTO compra_producto(id_compra  , id_producto)
+                $insert = mysqli_query($con, "INSERT INTO compra(id_compra  , id_producto)
                                                 VALUES($id_compra, $id_producto)") or die(mysqli_error($con));
 
 

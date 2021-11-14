@@ -189,35 +189,33 @@
 				</div>
 			</div>
 			<! falta metodo de pago >
-      <?php
-      $ser = Conectarse();
-      $mpago = mysqli_query($ser, "SELECT * FROM pago");
+      
+        <select class="form-select"  name="pago" id="pago">
+        <?php
+        $ser = Conectarse();
+        $mpago = mysqli_query($ser, "SELECT * FROM pago");
+        if($mpago){
+          while($lista = mysqli_fetch_assoc($mpago)){
+          $lista_id = $lista['id'];
+          $lista_nombre = $lista['nombre'];
+          echo '<option value="'.$lista_id.'">'.$lista_nombre.'</option>';
+          }
+          } 
+          
+            $_SESSION['pago'] = $_REQUEST['pago'];
+         
 
-      echo '<form id="formulario" name="formulario" method="post" action="comprar.php">
-            <select class="form-select" aria-label="Default select example" id="pago">
-            <option selected>Eleguir metodo de Pago</option>';
-            if($mpago){
-              while($lista = mysqli_fetch_assoc($mpago)){
-                $lista_id = $lista['id'];
-                $lista_nombre = $lista['nombre'];
+          ?>
+          </select>
 
-                echo '<option value="'.$lista_id.'">'.$lista_nombre.'</option>';
 
-               }
-               echo '</select>
-              
-               ';
-            }
-            
+          <div class="modal-footer">
+            <a type="button" type="submit" name="Comprar" class="btn btn-primary" href="comprar.php">Comprar</button>
+            <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
+          </div>
 
-      ?>
-
-      </div>
-      <div class="modal-footer">
-        <a type="button" type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Comprar</button>
-        </form>
-        <a type="button" class="btn btn-primary" href="borrarcarro.php">Vaciar carrito</a>
-      </div>
+          </div>
+          
     </div>
   </div>
 </div>
