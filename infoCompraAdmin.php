@@ -45,15 +45,13 @@
                             $row_precioProducto = $rowProducto['precio'];
 
                             // traer imagen
-                            $selectImagen = mysqli_query($con, "SELECT * FROM producto_imagen WHERE id_producto='$row_idProducto'") or die(mysqli_error($con));
-                            while($rowImagen = mysqli_fetch_assoc($selectImagen)) {
-                                $row_urlImagen = $rowImagen['imagen'];
-                            }
+                            $selectImagen = mysqli_query($con, "SELECT imagen FROM producto_imagen WHERE id_producto='$row_idProducto'") or die(mysqli_error($con));
+                            $row_urlImagen = mysqli_fetch_row($selectImagen)[0];
                             echo '
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                    <img src='.$row_urlImagen.'class="img-fluid rounded-start" alt="Imagen Producto">
+                                    <img src="'.$row_urlImagen.'" class="img-fluid rounded-start" alt="Imagen Producto">
                                     </div>
                                     <div class="col-md-8">
                                     <div class="card-body">

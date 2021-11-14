@@ -44,7 +44,7 @@
 <main class="form-signin">
   <form action="login.php" method="post">
     <img class="img-fluid w-25 h-25" src="electrodomesticos.png" alt="">
-    <h1 class="h3 mb-3 fw-normal">Login</h1>
+    <h1 class="h3 mb-3 fw-normal" >Login</h1>
 
     <div class="form-floating">
       <input type="email" class="form-control" name="logimeEmail" placeholder="name@example.com" required>
@@ -58,12 +58,12 @@
 
     <!-- Falta validacion y ver de identificar tipos-->
     <br>
-    <input type="submit" class="w-50 btn btn-lg btn-primary"> </a>
+    <input type="submit" class="w-50 btn btn-lg btn-primary" value="Login"> </a>
     <br>
     <br>
 
 
-    <a href='registro.php' type="submit" class="w-50 btn btn-lg btn-primary" > Registro </a>
+    <a href='registro.php' type="submit" class="w-50 btn btn-lg btn-primary" value="Registro"> Registro </a>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>

@@ -3,5 +3,8 @@ session_start();
 unset($_SESSION['carrito']);
 $carrito_mio=$_SESSION['carrito'];
 $_SESSION['carrito']=$carrito_mio;
+unset($_SESSION['usuario']);
+unset($_SESSION['usuarioid']);
+unset($_SESSION['usuariotipo']);
 header("location:index.php");
 ?>
