@@ -64,7 +64,7 @@
                                                         <p class="card-text">'.$cantidad.'</p>
                                                         <button class="btn btn-primary" type="submit" ><i class="fas fa-shopping-cart"></i> Añadir al carrito</button>
                                                 </div>
-                                            <input name="cantidad" type="number" placeholder="Cantidad" required id="cantidad" value="1" class="pl-2" />
+                                            <input name="cantidad" type="number" placeholder="Cantidad" required id="cantidad" value="1" max='.$cantidad.' class="pl-2" />
                                         </form>
                                     </div>
                                 ';
