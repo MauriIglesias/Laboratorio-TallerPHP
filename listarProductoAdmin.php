@@ -73,7 +73,7 @@
                                 $cantidad_query = mysqli_query($con, "SELECT cantidad FROM producto_cantidad WHERE id_producto='$row_id'");
                                 $cantidad_row = mysqli_fetch_row($cantidad_query);
                                 $cantidad = (int) $cantidad_row[0];
-                                if ($cantidad > 0) {
+                                
                                     echo '
                                 <tr>
                                 <td><img src="'.$imagen_url.'" style="max-height:100px"</td>
@@ -92,7 +92,7 @@
                                 </td>
                                 </tr>
                                 ';
-                                } 
+                                
                             }
                         }
                     ?>
