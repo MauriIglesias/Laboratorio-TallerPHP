@@ -45,30 +45,40 @@
                     }else{
                         echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close btn btn-sm btn-danger" data-dismiss="alert" aria-hidden="true">X</button>Error. No se pudo guardar los datos !</div>';
                     }
-					 
+					 // Guardo cantidad en tabla PRODUCTO_CANTIDAD
+					 $insert = mysqli_query($con, "INSERT INTO producto_cantidad(id_producto, cantidad)
+					 VALUES('$id_producto','$cantidad')") or die(mysqli_error($con));
+					if($insert){
+					// echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
+					}else{
+						echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close btn btn-sm btn-danger" data-dismiss="alert" aria-hidden="true">X</button>Error. No se pudo guardar los datos !</div>';
+					}
+
+					// Guardo link a imagen en tabla PRODUCTO_IMAGEN
+					$insert = mysqli_query($con, "INSERT INTO producto_imagen(id_producto, imagen)
+										VALUES('$id_producto','$imagen')") or die(mysqli_error($con));
+					if($insert){
+						echo '<div class="alert alert-success alert-dismissable" id="success-alert">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>Producto guardado</div>';
+					}else{
+						echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>Error. No se pudo guardar los datos !</div>';
+					}
 				}else{
-					echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close btn btn-sm btn-danger" data-dismiss="alert" aria-hidden="true">X</button>Error. Ya existe producto!</div>';
+					$row = mysqli_fetch_row($cek);
+					$row_id = $row[0];
+					$sql = mysqli_query($con, "SELECT cantidad FROM producto_cantidad WHERE id_producto='$row_id'");
+					if (mysqli_fetch_row($sql)[0] == -1){
+						$update_cantidad = mysqli_query($con, "UPDATE producto_cantidad SET cantidad='$cantidad' WHERE id_producto='$row_id'") or die(mysqli_error($con));
+						$update_producto = mysqli_query($con, "UPDATE producto SET precio='$precio' WHERE id='$row_id'") or die(mysqli_error($con));
+                    	$update_producto_imagen = mysqli_query($con, "UPDATE producto_imagen SET imagen='$imagen' WHERE id_producto='$row_id'") or die(mysqli_error($con));
+						echo '<div class="alert alert-success alert-dismissable" id="success-alert">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>Producto guardado</div>';
+					}
+					else{
+						echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close btn btn-sm btn-danger" data-dismiss="alert" aria-hidden="true">X</button>Error. Ya existe producto!</div>';
+					}
+					
 				}
-
-                // Guardo cantidad en tabla PRODUCTO_CANTIDAD
-                $insert = mysqli_query($con, "INSERT INTO producto_cantidad(id_producto, cantidad)
-															VALUES('$id_producto','$cantidad')") or die(mysqli_error($con));
-                if($insert){
-                    // echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Procesando...</div>';
-                }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close btn btn-sm btn-danger" data-dismiss="alert" aria-hidden="true">X</button>Error. No se pudo guardar los datos !</div>';
-                }
-
-                // Guardo link a imagen en tabla PRODUCTO_IMAGEN
-                $insert = mysqli_query($con, "INSERT INTO producto_imagen(id_producto, imagen)
-															VALUES('$id_producto','$imagen')") or die(mysqli_error($con));
-                if($insert){
-                    echo '<div class="alert alert-success alert-dismissable" id="success-alert">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>Producto guardado</div>';
-                }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>Error. No se pudo guardar los datos !</div>';
-                }
-				// header("Location:agregarProductoAdmin.php");
 			}
 			?>
 
